@@ -1,0 +1,86 @@
+body {
+	background-color: #041948;
+	color: #0D3184;
+}
+
+#container {
+	width: 100%;
+	height: 100%;
+	margin: 10px;
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+	align-content: flex-start;
+}
+
+.container-items {
+	width: 200px;
+	height: 200px;
+	background-color: #5777C0;
+	margin: 20px;
+	border: 10px solid #034BF1;
+	border-radius: 4px;
+	transition: transform 0.2s ease;
+}
+
+.container-items:hover {
+	transform: scale(1.02);
+}
+	
+	
+.container-items > .container-title {
+	width: 100%;
+	height: 30%;
+	padding: 5px;
+	box-sizing: border-box;
+	font-size: 16pt;
+	font-weight: bold;
+	overflow: hidden;
+}
+
+.container-items > .container-description {
+	width: 100%;
+	height: 70%;
+	padding: 5px;
+	box-sizing: border-box;
+
+	font-size: 12pt;
+	overflow: hidden;
+}
+
+.container-items > .container-more {
+	padding: 40% 0px 0px 0px;
+	width: 100%;
+	height: 20%;
+	text-align: center;
+
+	font-size: 28pt;
+	font-weight: bolder;
+}
+
+.difficulty-easy {
+	background-color: #FFB265;
+	border: 10px solid #CD7F32;
+}
+
+.difficulty-intermediate {
+	background-color: #F3F3F3;
+	border: 10px solid #C0C0C0;
+}
+
+.difficulty-hard {
+	background-color: #FFFD66;
+	border: 10px solid #FFD700;
+}
+
+#popup {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #041948;
+	top: 0;
+	left: 0;
+	display: none;
+}
