@@ -5,6 +5,11 @@ var problems = 	[
 	]
 
 $(document).ready(function () {
+
+	$('#button-close').on('click', function () {
+		$('#popup').css('display', 'none');
+	});
+
 	$.each(problems, function (index, value) {
 		var toAppend = '<div class="container-items ';
 		switch (value['Difficulty']) {
