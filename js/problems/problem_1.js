@@ -5,6 +5,7 @@ var challenge = {
 	reddit: 'https://www.reddit.com/r/dailyprogrammer/comments/6wjscp/2017828_challenge_329_easy_nearest_lucky_numbers/',
 	inputs: [{type: 'text', name: 'c1_number', title: 'Your number'}],
 	outputs: [{ type: 'text', name: 'c1_output', title: 'Result' }, { type: 'text', name: 'c1_time', title: 'Time' }],
+	init: function () { },
 	run: function () {
 		// Get start time
 		var startTimer = new Date();
@@ -59,7 +60,7 @@ var challenge = {
 		// Print answer
 		$('#' + this.outputs[0].name).val(answer);
 		// Print elapsed time
-		$('#' + this.outputs[1].name).val(FormatMS(endTimer - startTimer));
+		$('#' + this.outputs[1].name).val(formatMS(endTimer - startTimer));
 
 
 

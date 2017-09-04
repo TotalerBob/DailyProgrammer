@@ -1,3 +1,8 @@
+html, body {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
 body {
 	background-color: #1C1D20;
 	color: #0D3184;
@@ -118,7 +123,7 @@ body {
 }
 
 .description {
-	font-size: 12px;
+	font-size: 13px;
 	padding: 5px;
 	border-bottom: 4px solid #484C55;
 }
@@ -160,7 +165,7 @@ body {
 	height: 20px;
 	box-sizing: border-box;
 	border: none;
-	border-bottom: 2px solid green;
+	border-bottom: 2px solid white;
 	padding-bottom: 2px;
 	background-color: transparent;
 	color: white;
@@ -188,6 +193,46 @@ body {
 	border-bottom: 2px solid white;
 	padding-bottom: 2px;
 	margin: 5px;
+	background-color: transparent;
+	color: white;
+	font-size: 16px;
+}
+
+.color-square-container div {
+	float: left;
+	width: 10%;
+	padding-bottom: 10%;
+	margin: 0;
+}
+
+.canvas-full {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	
+}
+
+.pixelate {
+	image-rendering: pixelated;
+	image-rendering: -moz-crisp-edges;
+}
+
+.input-label {
+	display: inline-block;
+	width: 40%;
+	text-align: left;
+	color: white;
+	font-size: 16px;
+}
+
+.input-number {
+	display: inline-block;
+	width: 50%;
+	height: 20px;
+	box-sizing: border-box;
+	border: none;
+	border-bottom: 2px solid white;
+	padding-bottom: 2px;
 	background-color: transparent;
 	color: white;
 	font-size: 16px;
