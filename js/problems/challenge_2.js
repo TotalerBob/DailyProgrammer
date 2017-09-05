@@ -2,16 +2,16 @@ var challenge = {
 	title: 'Subset Sum Automata',
 	description: 'You begin with a board full of random integers in each cell. Cells will increment or decrement based on a simple application of the subset sum problem: if any subset of the 8 neighboring cells can sum to the target value, you increment the cell\'s sum by some value; if not, you decrement the cell by that value. Automata are defined with three integers x/ y / z, where x is the target value, y is the reward value, and z is the penalty value.',
 	difficulty: 'hard',
-	reddit: 'https://www.reddit.com/r/dailyprogrammer/comments/6wjscp/2017828_challenge_329_easy_nearest_lucky_numbers/',
+	reddit: 'https://www.reddit.com/r/dailyprogrammer/comments/6vyihu/20170825_challenge_328_hard_subset_sum_automata/',
 	fields: { width: 10, height: 10, history: [], curCyc: 0, values: [[], [], [], [], [], [], [], [], [], []] },
 	inputs: [{ type: 'number', name: 'c2_target', title: 'Target Value', default: 0, min: 0, max: 360 }, { type: 'number', name: 'c2_reward', title: 'Reward Value', default: 20, min: 0, max: 360 }, { type: 'number', name: 'c2_penalty', title: 'Penalty Value', default: 40, min: 0, max: 360 }, { type: 'number', name: 'c2_iterations', title: 'Iterations', default: 100, min: 1, max: 10000 }],
-	outputs: [{ type: 'canvas', name: 'c2_canvas', width: 10, height: 10} ,{ type: 'button', name: 'c2_displayCycle', title: 'Next Cycle', action: function () { website.problems[1].public_NextCycle(); } }],
+	outputs: [{ type: 'canvas', name: 'c2_canvas', width: 10, height: 10 }, { type: 'button', name: 'c2_displayCycle', title: 'Next Cycle', action: function () { website.problems[1].public_NextCycle(); } }, { type: 'button', name: 'c2_reset', title: 'Reset', action: function () { website.problems[1].init(); } }],
 	init: function () {
 		// Canvas
 		var canvas = document.getElementById("c2_canvas");
 		var canvas_ctx = canvas.getContext("2d");
 
-
+		// Generate new random field
 		for (var i = 0; i < this.fields.width; i++) {
 			for (var j = 0; j < this.fields.height; j++) {
 				var hue = ~~(Math.random() * 360);
@@ -22,6 +22,7 @@ var challenge = {
 			}
 		}
 
+		// Add first generation to history
 		this.fields.history = [canvas_ctx.getImageData(0, 0, this.fields.width, this.fields.height)];
 	},
 	run: function () {
@@ -51,29 +52,38 @@ var challenge = {
 		canvas_ctx.putImageData(ctx.fields.history[0], 0, 0);
 		
 
-
+		// Generate a new generation
 		function doCycle() {
+			// Loop all fields
 			for (var i = 0; i < ctx.fields.width; i++) {
 				for (var j = 0; j < ctx.fields.height; j++) {
+					// Get neighbors
 					var neighbors = getNearby(i, j);
+					// Check if subset sum fits
 					if (subsetSum(neighbors, target)) {
+						// Add reward
 						ctx.fields.values[i][j] += reward;
 						if (ctx.fields.values[i][j] > 360)
 							ctx.fields.values[i][j] -= 360;
 					}
 					else {
+						// Subtract penalty
 						ctx.fields.values[i][j] -= penalty;
 						if (ctx.fields.values[i][j] < 0)
 							ctx.fields.values[i][j] += 360;
 					}
 
+					// Redraw field of canvas
 					canvas_ctx.fillStyle = hslToHex(ctx.fields.values[i][j], 100, 50);
 					canvas_ctx.fillRect(i, j, 1, 1);
 				}
 			}
+
+			// Save generation
 			ctx.fields.history.push(canvas_ctx.getImageData(0, 0, ctx.fields.width, ctx.fields.height));
 		}
 
+		// Check if a subset sum fits in sum
 		function subsetSum(values, sum) {
 			if (~values.indexOf(sum)) {
 				return true;
@@ -98,6 +108,7 @@ var challenge = {
 			return false;
 		}
 
+		// Gets all 8 nearby values
 		function getNearby(x, y) {
 			var nearby = [];
 
@@ -124,11 +135,15 @@ var challenge = {
 			var canvas = document.getElementById("c2_canvas");
 			var canvas_ctx = canvas.getContext("2d");
 
+			// Draw new generation
 			canvas_ctx.putImageData(ctx.fields.history[ctx.fields.curCyc], 0, 0);
-			console.log('test');
+
+			// Increment
 			ctx.fields.curCyc++;
 		}, 80);
-		window.setTimeout(function () { window.clearInterval(timer); ctx.fields.curCyc = 0; }, 80 * cycles);
+
+		// Stop timer after all cycles are done
+		window.setTimeout(function () { window.clearInterval(timer); ctx.fields.curCyc = 0; }, 80 * cycles + 1);
 		
 	}
 }

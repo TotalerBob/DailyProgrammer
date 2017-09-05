@@ -3,8 +3,10 @@ var website = {
 	problems: [],
 	container: null,
 	registerProblems: function () {
-		this.loadProblem('problem_1.js');
-		this.loadProblem('problem_2.js', true);
+		// Register all challenges here, last one needs 
+		// an additional parameter with true to amrk the end
+		this.loadProblem('challenge_1.js');
+		this.loadProblem('challenge_2.js', true);
 	},
 	loadProblem: function (filename, isLast = false) {
 		var parent = this;
@@ -40,6 +42,7 @@ var website = {
 		element += problem.title + '</div><div class="reddit" id="' + reddit + '" ></div ></div ><div class="description">';
 		element += problem.description + '</div><div class="inputs" >';
 
+		// Inputs
 		for (var i = 0; i < problem.inputs.length; i++) {
 			switch (problem.inputs[i].type){
 				case 'text':
@@ -53,6 +56,7 @@ var website = {
 			
 		}
 
+		// Outputs
 		element += '</div><div class="run-placeholder" >';
 		var id = Math.random().toString(36).substr(2, 5);
 		element += '<input type="button" class="input-run" id="' + id + '" value="Run"/></div ><div class="outputs"><div class="output-title">Output</div>';
@@ -74,6 +78,7 @@ var website = {
 
 		element += '</div></div >';
 
+		// Run button
 		$('body').on('click', '#' + id, function () {
 			$('#' + id).val('Loading...');
 			setTimeout(function () {
@@ -83,6 +88,7 @@ var website = {
 			
 		});
 
+		// Reddit button 
 		$('body').on('click', '#' + reddit, function () {
 			var win = window.open(problem.reddit, '_blank');
 			win.focus();
@@ -141,3 +147,4 @@ function hslToHex(h, s, l) {
 	};
 	return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 }
+
