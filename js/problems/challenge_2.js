@@ -5,7 +5,7 @@ var challenge = {
 	reddit: 'https://www.reddit.com/r/dailyprogrammer/comments/6vyihu/20170825_challenge_328_hard_subset_sum_automata/',
 	fields: { width: 10, height: 10, history: [], curCyc: 0, values: [[], [], [], [], [], [], [], [], [], []] },
 	inputs: [{ type: 'number', name: 'c2_target', title: 'Target Value', default: 0, min: 0, max: 360 }, { type: 'number', name: 'c2_reward', title: 'Reward Value', default: 20, min: 0, max: 360 }, { type: 'number', name: 'c2_penalty', title: 'Penalty Value', default: 40, min: 0, max: 360 }, { type: 'number', name: 'c2_iterations', title: 'Iterations', default: 100, min: 1, max: 10000 }],
-	outputs: [{ type: 'canvas', name: 'c2_canvas', width: 10, height: 10 }, { type: 'button', name: 'c2_displayCycle', title: 'Next Cycle', action: function () { website.problems[1].public_NextCycle(); } }, { type: 'button', name: 'c2_reset', title: 'Reset', action: function () { website.problems[1].init(); } }],
+	outputs: [{ type: 'canvas', name: 'c2_canvas', width: 10, height: 10 }, { type: 'button', name: 'c2_displayCycle', title: 'Run Simulation', action: function () { website.problems[1].public_NextCycle(); } }, { type: 'button', name: 'c2_reset', title: 'Reset', action: function () { website.problems[1].init(); } }],
 	init: function () {
 		// Canvas
 		var canvas = document.getElementById("c2_canvas");
