@@ -1,14 +1,15 @@
 var website = {
 	displayedProblems: 0,
+	availableProblems: 3,
 	problems: [],
 	container: null,
 	registerProblems: function () {
-		// Register all challenges here, last one needs 
-		// an additional parameter with true to amrk the end
+		// Register all challenges here
 		this.loadProblem('challenge_1.js');
-		this.loadProblem('challenge_2.js', true);
+		this.loadProblem('challenge_2.js');
+		this.loadProblem('challenge_3.js');
 	},
-	loadProblem: function (filename, isLast = false) {
+	loadProblem: function (filename) {
 		var parent = this;
 
 		jQuery.ajax({
@@ -18,7 +19,7 @@ var website = {
 		}).done(function () {
 			parent.problems.push(challenge);
 
-			if (isLast)
+			if (parent.problems.length == parent.availableProblems)
 				parent.displayProblems(20);
 		});
 	},
