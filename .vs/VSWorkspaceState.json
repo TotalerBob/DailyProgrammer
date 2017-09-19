@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\css",
+    "\\js",
+    "\\js\\problems"
   ],
+  "SelectedNode": "\\js\\problems\\challenge_3.js",
   "PreviewInSolutionExplorer": false
 }

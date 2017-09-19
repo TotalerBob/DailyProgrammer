@@ -1,3 +1,8 @@
+/* Hack to disable spinner for number inputs in firefox, as these look awful when restyled */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
 html, body {
 	max-width: 100%;
 	overflow-x: hidden;
@@ -206,11 +211,6 @@ body {
 	
 }
 
-.pixelate {
-	image-rendering: pixelated;
-	image-rendering: -moz-crisp-edges;
-}
-
 .input-label {
 	display: inline-block;
 	width: 40%;
@@ -222,7 +222,7 @@ body {
 .input-number {
 	display: inline-block;
 	width: 50%;
-	height: 20px;
+	height: 25px;
 	box-sizing: border-box;
 	border: none;
 	border-bottom: 2px solid white;
